@@ -1,9 +1,12 @@
- 
+   url = 'http://127.0.0.1:8000/';
+   ofertas = 'api/ofertas';
+   
+   GET_ofertas = url + ofertas;
 
    jQuery(document).ready(function(){
       console.log("load");
       jQuery.ajax({
-            url: 'http://127.0.0.1:8000/api/ofertas',
+            url: GET_ofertas,
             method: 'GET',
             success: function(result){
                console.log(result);
