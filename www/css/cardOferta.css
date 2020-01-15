@@ -1,0 +1,32 @@
+
+/*OFERTAS*/
+.div-oferta:hover{
+  cursor: hand;
+  border: 1px solid;
+  -webkit-box-shadow: 6px 7px 24px 0px rgba(117,117,117,1)!important;
+  -moz-box-shadow: 6px 7px 24px 0px rgba(117,117,117,1)!important;
+  box-shadow: 6px 7px 24px 0px rgba(117,117,117,1)!important;
+
+}
+.tags{
+  font-size: 12px;
+  border-radius: 10px !important;
+  background-color: #ffffff;
+  color: #757575;
+  align-self: flex-end;
+}
+.tag{
+
+  padding-left: 2px;
+}
+.pagination{
+  display: inline-flex !important;
+
+}
+.page-item>a{
+  color:#009688 !important;
+}
+.page-item.active>span{
+   background-color: #009688 !important;
+   border-color: #009688 !important;
+}
