@@ -5,19 +5,30 @@ body {
 }
 html {
     display: table;
+    width: 100%;
+    padding:auto;
     margin: auto;
+
 }
 body {
     display: table-cell;
     vertical-align: middle;
-    background: #03A9F4;
+    background: #fff;
+    margin:auto;
+    padding: auto;
+}
+form{
+    margin:auto;
 }
 
 #login-page {
-    width: 500px;
+    width: 90%;
+}
+.logo{
+   text-align: center;
 }
 
-.card {
+/*.card {
      position: absolute;
      left: 50%;
      top: 50%;
@@ -26,4 +37,4 @@ body {
      -ms-transform: translate(-50%, -50%)
      -o-transform: translate(-50%, -50%)
      transform: translate(-50%, -50%);
-}
+}*/
