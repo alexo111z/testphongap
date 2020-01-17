@@ -17,7 +17,9 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700|K2D:200,400,700,800&display=swap" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <!--Estilos-->
   <link rel="stylesheet" href="./css/sidebar.css">
   <link rel="stylesheet" href="./css/cardOferta.css">
@@ -27,8 +29,8 @@
 <body>
 
   <!-- SideNav -->
-  <div class="row">
-    <div class="container">
+  <div class="row col-sm-12 head pl-0 ml-0">
+    <div class="container  col-sm-12 pl-0 mt-1 mb-0  ml-2">
         <ul id="slide-out" class="side-nav">
             <li><div class="user-view">
               <div class="background">
@@ -58,64 +60,29 @@
                 <a class="collapsible-header">Ver Ofertas <i class="material-icons">code</i></a>
               </li>
             </ul>
-        </li>
-            
+          </li>
             <!-- Side Nav Bar Bottom -->
             <div class="divider"></div>
-            <li><a class="waves-effect" href="./index.html"><i class="material-icons">input</i>Serrar sesión</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">show_chart</i>jQuery</a></li>
+            <li><a class="waves-effect" href="./index.html"><i class="material-icons">input</i>cerrar sesión</a></li>
         </ul>
-       <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons">menu</i></a>
-    
+       <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons btn-menu">menu</i></a>
       </div>
   </div>
   <!-- End SideNav -->
-  
       
-    <!-- Card centrado con Marerialize -->
+  <!-- BUSCADOR-->
   <div class="row">
-    <div class="input-field col s8 m8 l8">
-        <i class="material-icons prefix">search</i>
+    <div class="input-field col s8 m8 l8 d-flex align-items-center">
+        <i class="material-icons   prefix">search</i>
         <input id="search" type="text">
         <label for="search">Titulo</label>
     </div>
   </div>
-
-        <!--Card de la oferta (WEB) EJEMPLO
-        <div class="div-oferta mb-3 no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250" onclick="" novalidate>
-            <div class="col-sm-12 px-3 pt-3"><h4 class="mb-0">Ofertas 1</h4></div>
-            <div class="col-sm-12 px-3 mt-0 pt-0"><small class="text-muted text-uppercase">empresa inc.</small></div>
-            <div class="col-sm-12 px-3 mt-1">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-            <div class="row col-sm-12 px-3">
-                <div class="col-sm-6">
-                  <p class="text-muted"><i class='fas fa-map-marker-alt'></i> 
-                    Puerto Vallarta, Jalisco, Mexico
-                  </p>
-                </div>
-                <div class="tags  col-sm-6 text-right pb-3 pr-0 mr-0">
-                 
-                  <i class='fas fa-tags'></i> 
-                  <span>ventas.</span><span>,</span>
-                        
-                </div>
-            </div>
-        </div>
-        fin oferta-->
-
-
-        <div id="oferta"></div> <!--qui se muestran las ofertas desde jquery-->
-        
-
-
+  <!---FIN DE BUSCADOR-->
+  <!--OFERTAS-->
+  <div id="oferta" class=" col-sm-11 mx-auto"></div> 
+  <!--FIN OFERTAS-->
+ 
   <!--Import jQuery, Axios Library-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
