@@ -1,8 +1,9 @@
-   url = 'http://127.0.0.1:8000/';
+   url = 'http://192.168.1.95:8000/';
    ofertas = 'api/ofertas';
    
-   GET_ofertas = url + ofertas;
+  GET_ofertas = url + ofertas;
    //const axios = require('axios');
+  // GET_ofertas = 'http://capp.axo-corp.com/api/v1/getBranches';
 
 function loadOfertas(buscar){
 	axios.get(GET_ofertas,{
