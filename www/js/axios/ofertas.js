@@ -1,4 +1,4 @@
-   url = 'http://127.0.0.1:8000/';
+   url = 'http://192.168.1.72:8000/';
    ofertas = 'api/ofertas';
    
    GET_ofertas = url + ofertas;
@@ -12,7 +12,6 @@ function loadOfertas(buscar){
 		})
 			.then(function(response){
 				console.log(response);
-				alert('cargando...');
 				if(response.status == 204){
 					console.log('No se encontraron ofertas.');
 				}else{
