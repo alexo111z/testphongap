@@ -13,7 +13,6 @@ function loadOfertas(buscar){
 		})
 			.then(function(response){
 				console.log(response);
-				alert('cargando...');
 				if(response.status == 204){
 					console.log('No se encontraron ofertas.');
 				}else{
