@@ -1,4 +1,4 @@
-.tags>span{
+.tags>.tag{
     border-radius: 10px !important;
     -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -28,5 +28,15 @@
     margin: 0 auto;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
   }
+
+.icon-info{
+  font-size:20px;
+}
+#btn-postular{
+  z-index:3;
+}
+#imglogo{
+  max-width: 70px!important;
+}

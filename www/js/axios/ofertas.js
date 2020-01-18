@@ -1,4 +1,4 @@
-   url = 'http://192.168.1.95:8000/';
+   url = 'http://192.168.1.68:8000/';
    ofertas = 'api/ofertas';
    
   GET_ofertas = url + ofertas;
@@ -29,16 +29,18 @@ function loadOfertas(buscar){
 
 				contenido = '';
 				for(item of response.data){
-			 		icono = '<span><i class="material-icons align-text-bottom">local_offer</i></span>';
+			 		icono = '<span><i class="material-icons align-text-bottom" >local_offer</i></span>';
 					nombre = "";
-					coma = "";
+					coma = '<span>,</span>';
 					show ="";
 					var estado = 1;
 					if(item.tags.length>0){
 						for (tag of item.tags) {
 								nombre = '<small>'+tag.tag+'</small>';
-								coma = '<span>,</span>';
-								show += nombre+coma;
+								show +=nombre;
+								if(tag != item.tags[item.tags.length-1]){
+									show += coma;
+								}
 						}
 						show = icono + show;
 					}
@@ -49,12 +51,12 @@ function loadOfertas(buscar){
 									'<p>'+item.d_corta+'</p>'+
 								'</div>'+
 								'<div class="row col-sm-12 px-3">'+
-									'<div class="col-sm-6">'+
+									'<div class="col-sm-6 ml-0 pl-0">'+
 										'<p class="text-muted"><i class="fas fa-map-marker-alt"></i> '
 											+item.id_ciudad+','+item.id_estado+','+item.id_pais+
 										'</p>'+
 									'</div>'+
-									'<div class="tags  col-sm-6 text-right pb-3 pr-0 mr-0">'+
+									'<div class="tags col-sm-6 text-right pb-3 pr-0 mr-0">'+
 										show+
 									'</div>'+
 								'</div>'+

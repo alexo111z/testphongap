@@ -9,14 +9,16 @@
 
 }
 .tags{
-  font-size: 12px;
+  font-size: 16px !important;
   border-radius: 10px !important;
   background-color: #ffffff;
   color: #757575;
   align-self: flex-end;
 }
+.tags>span>i{
+ font-size: 16px !important;
+}
 .tag{
-
   padding-left: 2px;
 }
 .pagination{
