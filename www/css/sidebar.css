@@ -1,3 +1,23 @@
-.SelectNav{
-    background-color: #47474746;
+
+.btn-menu{
+    font-size: 40px!important;
+    color:#ffffff;
+  }
+  .head{
+    background-color: #009688;
+    margin: 0!important;
+  }
+  .SelectNav{
+    background-color: #88B0AD;
+  }
+  #logout{
+    margin-top: 70%!important;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+.divider{
+  background-color: #009688!important;
+}
+.user-view>a>span{
+  color:#212121!important;
 }
