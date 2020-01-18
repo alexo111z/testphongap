@@ -1,0 +1,21 @@
+nav{
+    background-color: #24A69A;
+}
+form.genero{
+    padding-left: 1em;
+    margin-left: 2em;
+}
+.container {     
+    border:2px solid #ccc; 
+    width:300px; height: 10em; 
+    overflow-y: scroll;
+}
+.localidad, .personales, .academica, .laboral{
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.tags{
+    text-align: center;
+    vertical-align: auto;
+}

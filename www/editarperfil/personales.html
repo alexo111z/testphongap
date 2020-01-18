@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Materialize CSS</title>
+  <!--Responsive Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!--Estilos-->
+  <link rel="stylesheet" href="./../css/editarPerfil.css">
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper">
+      
+      <ul id="nav-mobile" class="left ">
+        <li><a href="./../perfil.html"><i class="material-icons prefix editar">navigate_before</i></a></li>
+        <!-- <li><a href="#">Components</a></li>  -->
+      </ul>
+      <ul class="right ">
+        <!-- <li><a href="sass.html">Sass</a></li> -->
+        <li><a href="#">Guardar</a></li>
+        </ul>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+  <!-- PERSONALES -->
+    <div class="personales">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">person</i>
+                <input id="nombre" type="text">
+                <label for="nombre">Nombre (s)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">person</i>
+                <input id="apellido" type="text">
+                <label for="apellido">Apellido</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="telefono" type="text">
+                <label for="telefono">Telefono</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s1">
+                <i class="material-icons prefix">wc</i>
+            </div>
+            <div class="col s11">
+                <h6 class="left-align">Genero</h6>
+            </div>
+            <div class="col s12">
+            <form class="genero" action="#">
+                <p>
+                    <label>
+                        <input name="genero" value="1" type="radio" id="genero1" />
+                        <label for="genero1">Femenino</label>
+                    </label>
+                </p>
+                <p>
+                  <label>
+                        <input name="genero" value="0" type="radio" id="genero2" />
+                        <label for="genero2">Masculino</label>
+                  </label>
+                </p>
+            </form>
+            </div>
+        </div>
+    </div>
+  <!-- End PERSONALES -->
+
+
+
+
+  <!--Import jQuery Library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--Scripts-->
+  <script src="#"></script> 
+
+  <!--End Scripts-->
+</body>
+</html>
+
+
+
