@@ -115,6 +115,12 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
+        <!--<?xml version="1.0" encoding="utf-8"?>
+        <network-security-config>
+            <domain-config cleartextTrafficPermitted="true">
+                <domain includeSubdomains="true">http://192.168.1.72:8000/</domain>
+            </domain-config>
+        </network-security-config>-->
         <allow-navigation href="*" />
         <allow-intent href="market:*" />
         <allow-navigation href="http://*/*" />
