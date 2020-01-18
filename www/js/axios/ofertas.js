@@ -77,6 +77,7 @@ function loadOfertas(buscar){
 
 jQuery(document).ready(function(){
 	console.log("load");
+	alert(localStorage.getItem('key'));
 	loadOfertas();
 });
 
