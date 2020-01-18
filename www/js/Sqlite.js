@@ -73,7 +73,7 @@ function InicioConJQuery(){
 jQuery(document).on("click",'#login',function(e){
 	console.log('IniciarSesion');
 	console.log(POST_login);
-	InicioConJQuery();
+	IniciarSesion();
 	//IniciarSesion();
 	/*window.sqlitePlugin.echoTest(function(){
 		alert("Prueba SQLite");

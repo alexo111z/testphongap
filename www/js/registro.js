@@ -50,7 +50,7 @@ jQuery(document).ready(function(){
     ocultar();
     mostrarCorreo();
     $(document).on('click', '#salir',function(){
-        //redirect login
+        window.location.href = 'index.html';
     });
     $(document).on('click', '#correoNext',function(){
         ocultar();
