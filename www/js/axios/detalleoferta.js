@@ -1,4 +1,4 @@
-url = 'http://192.168.1.72:8000/';
+url = 'http://192.168.1.95:8000/';
 oferta = 'api/oferta/';
 
 GET_oferta = url + oferta;
@@ -33,10 +33,10 @@ function loadOfertas(oferta){
                 $('.tags').html(show);
                 $('#nombre-empresa').html(item.id_emp);
                 if(item.logo==null){
-                $('#imglogo').attr("src","http://192.168.1.68:8000/api/logos/empresa.png");
-                }else{$('#imglogo').attr("src","http://192.168.1.68:8000/api/logos/"+item.logo);}
+                $('#imglogo').attr("src",url + "api/logos/empresa.png");
+                }else{$('#imglogo').attr("src",url + "api/logos/"+item.logo);}
                 
-                $('#btn-postular').html('<button type="button" class="btn btn-info w-75">postularme</button>');
+                $('#btn-postular').html('<button id="btn-postularme" type="button" class="btn btn-info w-75">postularme</button>');
                 $('#divcargando').hide();
             }
          })
@@ -51,20 +51,27 @@ jQuery(document).ready(function(){
     loadOfertas(oferta);
 });
 
+
+$(document).on("click",'#btn-postularme',function(e){
+ const res = axios.post('http://192.168.1.95:8000/api/postular/'+$_GET("oferta") );
+ location.reload();
+});
+
+
 function $_GET(param)
 {
     /* Obtener la url completa */
-    url = document.URL;
+    url1 = document.URL;
     /* Buscar a partir del signo de interrogación ? */
-    url = String(url.match(/\?+.+/));
+    url1 = String(url1.match(/\?+.+/));
     /* limpiar la cadena quitándole el signo ? */
-    url = url.replace("?", "");
+    url1 = url1.replace("?", "");
     /* Crear un array con parametro=valor */
-    url = url.split("&");
+    url1 = url1.split("&");
     x = 0;
-    while (x < url.length)
+    while (x < url1.length)
     {
-        p = url[x].split("=");
+        p = url1[x].split("=");
         if (p[0] == param)
         {
             return decodeURIComponent(p[1]);
