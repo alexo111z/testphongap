@@ -1,5 +1,5 @@
 
-url = 'http://192.168.1.72:8000/';
+url = 'http://192.168.1.68:8000/';
 perfil = 'api/perfil';
 
 POST_perfil = url + perfil;
