@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Materialize CSS</title>
+  <title>Mis Ofertas</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!--Responsive Meta Tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!--Jquery-->
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700|K2D:200,400,700,800&display=swap" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
   <!--Estilos-->
   <link rel="stylesheet" href="./css/sidebar.css">
@@ -59,32 +71,39 @@
       </div>
   </div>
   <!-- End SideNav -->
-
-  <!-- Cards -->
+<!-- BUSCADOR-->
   <div class="row">
-    <div class="CardOfertas ">
-      <div class="col s1 m1 l1"></div>
-
-          <div class="col s10 m10 l10">
-          
-          </div>
-
-        <div class="col s1 m1 l1"></div>
+    <div class="input-field col s8 m8 l8 d-flex align-items-center">
+        <i class="material-icons   prefix">search</i>
+        <input id="search" type="text">
+        <label for="search">Titulo</label>
     </div>
   </div>
-  <!-- End Card -->
+  <!---FIN DE BUSCADOR-->
+ <!--OFERTAS-->
+  <div id="oferta" class=" col-sm-11 mx-auto"></div> 
+  <!--FIN OFERTAS-->
 
 
 
 
-  <!--Import jQuery Library-->
+ <!--Import jQuery, Axios Library-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!--Import materialize.js-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <!--Scripts-->
   <script src="./js/sidebar.js"></script> 
+  <script src="./js/axios/misOfertas.js"></script>
 
   <!--End Scripts-->
+   <!-- Bootstrap --><!-- 
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
 
