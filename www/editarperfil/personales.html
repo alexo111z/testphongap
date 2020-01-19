@@ -22,11 +22,12 @@
       
       <ul id="nav-mobile" class="left ">
         <li><a href="./../perfil.html"><i class="material-icons prefix editar">navigate_before</i></a></li>
+        <li>Datos Personales</li>
         <!-- <li><a href="#">Components</a></li>  -->
       </ul>
       <ul class="right ">
         <!-- <li><a href="sass.html">Sass</a></li> -->
-        <li><a href="#">Guardar</a></li>
+        <li><a href="#" id="SavePersonal">Guardar</a></li>
         </ul>
     </div>
   </nav>
@@ -37,22 +38,29 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="nombre" type="text">
-                <label for="nombre">Nombre (s)</label>
+                <input id="editNombre" type="text">
+                <label for="editNombre">Nombre (s)</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="apellido" type="text">
-                <label for="apellido">Apellido</label>
+                <input id="editApellido" type="text">
+                <label for="editApellido">Apellido</label>
             </div>
         </div>
         <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">perm_contact_calendar</i>
+                    <input id="editFecha" type="text" class="datepicker">
+                    <label for="editFecha">Elige la fecha</label>
+                </div>
+            </div>
+        <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">phone</i>
-                <input id="telefono" type="text">
-                <label for="telefono">Telefono</label>
+                <input id="editTelefono" type="text">
+                <label for="editTelefono">Telefono</label>
             </div>
         </div>
         <div class="row">
@@ -66,14 +74,14 @@
             <form class="genero" action="#">
                 <p>
                     <label>
-                        <input name="genero" value="1" type="radio" id="genero1" />
-                        <label for="genero1">Femenino</label>
+                        <input name="genero" value="1" type="radio" id="generoF" />
+                        <label for="generoF">Femenino</label>
                     </label>
                 </p>
                 <p>
                   <label>
-                        <input name="genero" value="0" type="radio" id="genero2" />
-                        <label for="genero2">Masculino</label>
+                        <input name="genero" value="0" type="radio" id="generoH" />
+                        <label for="generoH">Masculino</label>
                   </label>
                 </p>
             </form>
@@ -85,13 +93,14 @@
 
 
 
-  <!--Import jQuery Library-->
+ <!--Import jQuery, Axios Library-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!--Import materialize.js-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <!--Scripts-->
   <script src="#"></script> 
-
+  <script src="./../js/axios/editarPerfil.js"></script>
   <!--End Scripts-->
 </body>
 </html>
