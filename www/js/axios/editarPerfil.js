@@ -39,8 +39,34 @@ jQuery(document).ready(function(){
 		.then(function(response){
 			lugares = response.data;
 			console.log(response.data);
+			var elements = '', show = '';
+			for(pais of response.data.pais){
+				elements =  '<p><label><input name="pais" value="'+pais.id+'" type="radio" id="pais'+pais.id+'" />'+
+                        '<label for="pais'+pais.id+'">'+pais.pais+'</label></label></p>';
+               	show += elements;
+			}
+			$('.container.pais').html(show);
+
+			elements = '', show = '';
+			for(estudio of response.data.nivel){
+				elements = '<p><label><input name="estudio" value="'+estudio.id+'" type="radio" id="estudio'+estudio.id+'" />'+
+                        '<label for="estudio'+estudio.id+'">'+estudio.nivel+'</label></label></p>';
+				show += elements;
+			}
+			$('.container.estudios').html(show);
+
+			elements = '', show = '';
+			for(area of response.data.area){
+				elements = '<p><label><input name="area" value="'+area.id+'" type="radio" id="area'+area.id+'" />'+
+                        '<label for="area'+area.id+'">'+area.area+'</label></label></p>';
+				show += elements;
+			}
+			$('.container.areas').html(show);
+
 		});
+
 	console.log(lugares);
+
 	axios.get(POST_perfil)
 		.then(function(response){
 			console.log(response.data);
@@ -54,44 +80,26 @@ jQuery(document).ready(function(){
 				$('#generoH').attr('checked', true);
 			}
 
+			$('input:radio[id=estudio'+response.data.id_estudios.id+']').attr('checked', true);
+			$('input:radio[id=area'+response.data.id_area.id+']').attr('checked', true);
 
-			$('#edad').text(response.data.edad);
-			if (response.data.id_ciudad == null || response.data.id_estado == null || response.data.id_pais == null) {
-				$('#localidad').text('No has llenado o completado esta sección.');
-			}else{
-				$('#localidad').text(response.data.id_ciudad.municipio+','+response.data.id_estado.estado+','+response.data.id_pais.pais);
-			}
-			if (response.data.id_estudios == null){
-				$('#estudio').text('Vacio');
-			}else{
-				$('#estudio').text(response.data.id_estudios.estudios);
-			}
-			if (response.data.id_area == null) {
-				$('#area').text('Vacio');
-			}else{
-				$('#area').text(response.data.id_area.area);
-			}
-			if (response.data.conocimientos == null) {
-				$('#Bconocimientos').text('No tienes conocimientos registrados.');
-			}else{
-				$('#Bconocimientos').text(response.data.conocimientos);
-			}
+			$('#editConocimientos').text(response.data.conocimientos);
 			var show = '', lista = '';
 			//console.log(response.data.tags);
 			if(response.data.tags != null){
 				for (tag of response.data.tags) {
 					//console.log(tag.tag);
-						lista = '<div class="chip" id="tags-chips">'
-			              + tag.tag +
-			            '</div>';
+						lista = '<div class="chip">'
+                      				+tag.tag+
+                      				'<i class="close material-icons" id="'+tag.id+'">close</i>'+
+                      			'</div>';
 			            show += lista;
 			            //out = '';
 						//contenido += out;
 				}
 				//show = + show;
 				//console.log(show);
-				$('#tags-message').hide();
-				$('#tags-chips').html(show);
+				$('.tags-elemnt').html(show);
 			}else{
 				$('#tags-message').text('No tienes habilidades(tags) registradas.');
 			}
@@ -102,6 +110,41 @@ jQuery(document).ready(function(){
 		});
 
 });
+jQuery(document).on("click",'input[name=pais]',function(e){ //Actualizar estadis
+	axios.get(GET_lugares)
+		.then(function(response){
+			//console.log(response.data.pais);
+			var elements = '', show = '';
+			for(estado of response.data.estado){
+				if(estado.id_pais == $('input:radio[name=pais]:checked').val()){
+					elements =  '<p><label><input name="estado" value="'+estado.id+'" type="radio" id="estado'+estado.id+'" />'+
+	                        '<label for="estado'+estado.id+'">'+estado.estado+'</label></label></p>';
+	            	show += elements;
+                }
+			}
+			$('.container.estado').html(show);
+			var ciudad = '<p><label><input name="ciudad" value="" type="radio" id="ciudad" disabled="" /><label for="ciudad">esperando...</label></label></p>';
+			$('input[name=ciudad]').attr('checked', false);
+			$('.container.ciudad').html(ciudad);
+		});
+})
+jQuery(document).on("click",'input[name=estado]',function(e){ //Actualizar ciudades
+	axios.get(GET_lugares)
+		.then(function(response){
+			//console.log(response.data.pais);
+			var elements = '', show = '';
+			for(ciudad of response.data.ciudad){
+				if(ciudad.id_estado == $('input:radio[name=estado]:checked').val()){
+					elements =  '<p><label><input name="ciudad" value="'+ciudad.id+'" type="radio" id="estado'+ciudad.id+'" />'+
+	                        '<label for="estado'+ciudad.id+'">'+ciudad.municipio+'</label></label></p>';
+	            	show += elements;
+                }
+			}
+			$('.container.ciudad').html(show);
+		});
+
+});
+
 jQuery(document).on("click",'#SavePersonal',function(e){
 	console.log('editar: '+POST_personal);
 	var data = {
@@ -126,3 +169,38 @@ jQuery(document).on("click",'#SavePersonal',function(e){
     });
 
 });
+jQuery(document).on("click",'#SaveLocalidad',function(e){
+	console.log('editar: '+POST_localidad);
+	var data = {
+		pais: $('input:radio[name=pais]:checked').val(),
+		estado: $('input:radio[name=estado]:checked').val(),
+		ciudad: $('input:radio[name=ciudad]:checked').val(),
+	}
+	axios.post(POST_localidad ,JSON.stringify(data))
+	.then(function(response){
+		console.log(response);
+		alert('Cambios realizados');
+		//window.location.href = './../../perfil.html';
+	})
+	.catch(function(error){
+      console.log(error.response);
+      alert('Sucedio un problema, no se realizaron los cambios.');
+    });
+});
+jQuery(document).on("click",'#SaveAcademica',function(e){
+	console.log('editar: '+POST_academica);
+	var data = {
+		estudios: $('input:radio[name=estudio]:checked').val(),
+		area: $('input:radio[name=area]:checked').val(),
+	}
+	axios.post(POST_academica ,JSON.stringify(data))
+	.then(function(response){
+		console.log(response);
+		alert('Cambios realizados');
+		//window.location.href = './../../perfil.html';
+	})
+	.catch(function(error){
+      console.log(error.response);
+      alert('Sucedio un problema, no se realizaron los cambios.');
+    });
+})
