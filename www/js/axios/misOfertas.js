@@ -1,17 +1,20 @@
 
-   url = 'http://192.168.1.95:8000/';
+   url = 'http://192.168.1.72:8000/';
 
-   ofertas = 'api/ofertas';
+   mis = 'api/misofertas';
    
-  GET_ofertas = url + ofertas;
+  GET_ofertas = url + mis;
    //const axios = require('axios');
   // GET_ofertas = 'http://capp.axo-corp.com/api/v1/getBranches';
 
 function loadOfertas(buscar){
-	axios.get(GET_ofertas,{
+	var token = localStorage.getItem('token');
+	var id = localStorage.getItem('id');
+	//axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+	axios.get(GET_ofertas+'/'+id,{
 			params:{
 				search: buscar,
-			}
+			},
 		})
 			.then(function(response){
 				console.log(response);
