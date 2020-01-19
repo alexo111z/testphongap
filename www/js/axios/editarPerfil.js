@@ -14,6 +14,7 @@ GET_lugares = url+'/api/localidades';
 
 jQuery(document).ready(function(){
 	console.log("editar perfil");
+	//Calendario
 	$(function(){
         $('.datepicker').pickadate({
             monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -91,7 +92,7 @@ jQuery(document).ready(function(){
 					//console.log(tag.tag);
 						lista = '<div class="chip">'
                       				+tag.tag+
-                      				'<i class="close material-icons" id="'+tag.id+'">close</i>'+
+                      				'<i class="close material-icons cerrar" id="'+tag.id+'">close</i>'+
                       			'</div>';
 			            show += lista;
 			            //out = '';
@@ -203,4 +204,19 @@ jQuery(document).on("click",'#SaveAcademica',function(e){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
     });
+});
+jQuery(document).on("click",'.material-icons.cerrar',function(e){
+	alert($(this).attr('id'));
 })
+jQuery(document).on("change",'#newTag',function(e){
+	var nuevo = '';
+	if ($('#newTag').val().trim() != '') {
+		alert($('#newTag').val());
+		nuevo = '<div class="chip">'
+  				+$('#newTag').val()+
+  				'<i class="close material-icons cerrar" id="0">close</i>'+
+  			'</div>';
+		$('.tags-elemnt').append(nuevo);
+		$('#newTag').val('');
+	}
+});
