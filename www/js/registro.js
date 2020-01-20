@@ -174,7 +174,7 @@ jQuery(document).ready(function(){
             axios.post(url + registrar,JSON.stringify(data))
             .then(function(response){
               console.log(response);
-              if(response==1){
+              if(response.data==true){
                 alert('Usuario registrado con éxito');
                 window.location.href = 'index.html';
               }else{
