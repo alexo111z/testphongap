@@ -1,4 +1,4 @@
-url = 'http://192.168.1.72:8000/';
+url = 'http://192.168.1.95:8000/';
 oferta = 'api/oferta/';
 
 GET_oferta = url + oferta;
@@ -7,7 +7,11 @@ GET_logo = url+'api/logos/';
 // GET_ofertas = 'http://capp.axo-corp.com/api/v1/getBranches';
 
 function loadOfertas(oferta){
- axios.get(GET_oferta+oferta)
+ axios.get(GET_oferta+oferta,{
+                params:{
+                    id_user: localStorage.getItem('id')
+                }
+            })
          .then(function(response){
              console.log(response);
              if(response.status == 204){
@@ -33,11 +37,14 @@ function loadOfertas(oferta){
                 $('.tags').html(show);
                 $('#nombre-empresa').html(item.id_emp);
                 if(item.logo==null){
-                $('#imglogo').attr("src","http://192.168.1.68:8000/api/logos/empresa.png");
-                }else{$('#imglogo').attr("src","http://192.168.1.68:8000/api/logos/"+item.logo);}
-                
-                $('#btn-postular').html('<button type="button" class="btn btn-info w-75">postularme</button>');
-                $('#divcargando').hide();
+                $('#imglogo').attr("src",url + "api/logos/empresa.png");
+                }else{$('#imglogo').attr("src",url + "api/logos/"+item.logo);}
+                if(item.estado=='1'){
+                    $('#btn-postular').html('<button id="btn-cancelar" type="button" class="btn btn-danger w-75">Cancelar Postulación</button>');
+                }else{
+                    $('#btn-postular').html('<button id="btn-postularme" type="button" class="btn btn-info w-75">postularme</button>');
+                }
+                    $('#divcargando').hide();
             }
          })
          .catch(function(error){
@@ -51,20 +58,63 @@ jQuery(document).ready(function(){
     loadOfertas(oferta);
 });
 
+
+$(document).on("click",'#btn-postularme',function(e){
+ //const res = axios.post('http://192.168.1.95:8000/api/postular/'+$_GET("oferta") );
+ var data= {
+    id_user: localStorage.getItem('id')
+  };
+
+axios.post(url + 'api/postular/'+$_GET("oferta"),$.param(data,true))
+    .then(function(response){
+        location.reload();
+        console.log(response);
+    })
+    .catch(function(error){
+        if (error.response.status == 401) {
+            alert('Datos incorrectos');
+        }
+    console.log(error.response);
+
+    });
+
+});
+$(document).on("click",'#btn-cancelar',function(e){
+    //const res = axios.post('http://192.168.1.95:8000/api/postular/'+$_GET("oferta") );
+    var data= {
+       id_user: localStorage.getItem('id')
+     };
+   
+   axios.post(url + 'api/cancelar/'+$_GET("oferta"),$.param(data,true))
+       .then(function(response){
+           location.reload();
+           console.log(response);
+       })
+       .catch(function(error){
+           if (error.response.status == 401) {
+               alert('Datos incorrectos');
+           }
+       console.log(error.response);
+   
+       });
+   
+   });
+   
+
 function $_GET(param)
 {
     /* Obtener la url completa */
-    url = document.URL;
+    url1 = document.URL;
     /* Buscar a partir del signo de interrogación ? */
-    url = String(url.match(/\?+.+/));
+    url1 = String(url1.match(/\?+.+/));
     /* limpiar la cadena quitándole el signo ? */
-    url = url.replace("?", "");
+    url1 = url1.replace("?", "");
     /* Crear un array con parametro=valor */
-    url = url.split("&");
+    url1 = url1.split("&");
     x = 0;
-    while (x < url.length)
+    while (x < url1.length)
     {
-        p = url[x].split("=");
+        p = url1[x].split("=");
         if (p[0] == param)
         {
             return decodeURIComponent(p[1]);
