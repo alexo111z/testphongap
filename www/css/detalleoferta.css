@@ -16,6 +16,7 @@
   }
   .d-larga{
     border-left: 5px solid #009688;
+    white-space: pre-line;
   }
   #divcargando{
     display: flex;

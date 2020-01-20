@@ -1,12 +1,16 @@
-
-
-body {
+html,body,.registroUsuarios{
+    height: 100%!important;
+}
+.contrasena, .nombre, .personal, .academico{
+    display:none;
+}
+/*body {
     
     vertical-align: auto;
     background: #fff;
     margin:1em;
     padding: 1em;
-}
+}*/
 .rith{
     float: right;
 }

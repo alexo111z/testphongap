@@ -1,4 +1,4 @@
- 	url = 'http://192.168.1.68:8000/';
+ 	url = 'http://192.168.1.95:8000/';
    login = 'api/login';
    
    POST_login = url + login;
@@ -42,14 +42,18 @@ jQuery(document).on("click",'#login',function(e){
 		password: $('#password').val(),
   	};
 
-  axios.post(url + '/api/login',$.param(data,true))
+  axios.post(url + 'api/login',JSON.stringify(data))
     .then(function(response){
       console.log(response);
       //alert(response.data.access_token);
       var tok = response.data.access_token;
 	  var id = response.data.id;
-      localStorage.setItem('token', tok)
-      localStorage.setItem('id', id)
+      localStorage.setItem('token', tok);
+	  localStorage.setItem('id', id);
+	  localStorage.setItem('nombre', response.data.nombre);
+	  localStorage.setItem('email', response.data.email);
+	  localStorage.setItem('apellido', response.data.apellido);
+	  
       //console.log(tok, id);
       window.location.href = 'ofertas.html';
     })

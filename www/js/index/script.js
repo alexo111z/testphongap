@@ -1,4 +1,4 @@
-url = 'http://192.168.1.68:8000/';
+url = 'http://192.168.1.95:8000/';
 var app = angular.module('mainModule', []);
 
 app.controller('mainController', function($scope, $http){ //o scope liga o js e o template
@@ -10,13 +10,13 @@ app.controller('mainController', function($scope, $http){ //o scope liga o js e 
   }
 });
 
-$(document).on("click",'#login',function(e){
+/*$(document).on("click",'#login',function(e){
   //const res = axios.post(url +'api/login')
-  /*var data= {
+  var data= {
     email: $('#email').val(),
     password: $('#password').val()
   };*/
-  var data= {
+  /*var data= {
     email: $('#email').val(),
     password: $('#password').val()
   }
@@ -28,5 +28,5 @@ $(document).on("click",'#login',function(e){
     .catch(function(error){
       console.log(error);
     });
-});
+});*/
 

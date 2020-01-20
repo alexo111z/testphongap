@@ -1,7 +1,9 @@
-
+url = 'http://192.168.1.95:8000/';
 // SIDEBAR
 $(document).ready(function(){
-   
+   $('#user-name').html(localStorage.getItem('nombre')+' '+ localStorage.getItem('apellido') );
+   $('#user-email').html(localStorage.getItem('email'));
+    $('#user-img').attr('src',url +'api/usuarios/fotos/'+localStorage.getItem('id'));
     // SIDE OPTIONS
     $('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
@@ -12,6 +14,11 @@ $(document).ready(function(){
         onClose: function(el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
     }
     );
+    $(document).on("click",'#logout',function(e){
+        localStorage.clear();
+        document.location.href = 'index.html';
+    });
+
 
     // START OPEN
     //$('.button-collapse').sideNav('show');
