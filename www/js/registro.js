@@ -1,4 +1,4 @@
-url = 'http://192.168.1.95:8000/';
+url = 'http://192.168.1.72:8000/';
 datos = 'api/registro';
 registrar= 'api/registrar'
 GET_datos = url+datos

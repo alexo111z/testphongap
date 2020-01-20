@@ -1,7 +1,7 @@
 
 
-url = 'http://192.168.1.95:8000/';
-perfil = 'api/perfil';
+url = 'http://192.168.1.72:8000/';
+perfil = 'api/perfil/';
 
 
 var id = localStorage.getItem('id');

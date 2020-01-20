@@ -1,4 +1,4 @@
-url = 'http://192.168.1.95:8000/';
+url = 'http://192.168.1.72:8000/';
 // SIDEBAR
 $(document).ready(function(){
    $('#user-name').html(localStorage.getItem('nombre')+' '+ localStorage.getItem('apellido') );

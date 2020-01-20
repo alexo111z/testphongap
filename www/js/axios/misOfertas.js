@@ -1,5 +1,5 @@
 
-   url = 'http://192.168.1.95:8000/';
+   url = 'http://192.168.1.72:8000/';
 
    mis = 'api/misofertas';
    
@@ -38,6 +38,7 @@ function loadOfertas(buscar){
 					nombre = "";
 					coma = '<span>,</span>';
 					show ="";
+					estado = "";
 					var estado = 1;
 					if(item.tags.length>0){
 						for (tag of item.tags) {
@@ -49,7 +50,8 @@ function loadOfertas(buscar){
 						}
 						show = icono + show;
 					}
-					 out = '<div class="div-oferta mb-3 no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250" data-href="./detalleoferta.html?oferta='+item.id+'" novalidate>'+
+					/*
+					out = 	'<div class="div-oferta mb-3 no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250" data-href="./detalleoferta.html?oferta='+item.id+'" novalidate>'+
 								'<div class="col-sm-12 px-3 pt-3"><h4 class="mb-0">'+item.titulo+'</h4></div>'+
 								'<div class="col-sm-12 px-3 mt-0 pt-0"><small class="text-muted text-uppercase">'+item.id_emp+'</small></div>'+
 								'<div class="col-sm-12 px-3 mt-1">'+
@@ -66,7 +68,50 @@ function loadOfertas(buscar){
 									'</div>'+
 								'</div>'+
 							'</div>';
-							contenido += out;
+							*/
+
+							if(item.existe == 1){
+								estado =	'<div class="py-1 my-0 px-auto text-center alert alert-danger text-danger " role="alert">'+
+					                			'<small>Eliminada</small>'+
+					            			'</div>';
+							}else{
+								if(item.vig_estado == 1){
+									estado =	'<div class="py-1 my-0 px-auto text-center alert alert-success text-success " role="alert">'+
+													'<small>Vigente</small>'+
+												'</div>';
+								}else{
+									estado =	'<div class=" py-1 my-0 px-auto text-center alert alert-danger text-danger " role="alert">'+
+													'<small>No Vigente</small>'+
+												'</div>';
+								}
+							}
+							
+					out = 	'<div class="div-oferta mb-3 no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250" data-href="./detalleoferta.html?oferta='+item.id+'" novalidate>'+
+					        	'<div class="row col-sm-12 px-3 pt-3"><h4 class="col-sm-6 mb-0">'+item.titulo+'</h4>'+
+									'<div class="d-flex justify-content-end col-sm-6 text-right">'
+										+estado+
+					              	'</div>'+
+					            '</div>'+
+					            '<div class="col-sm-12 px-3 mt-0 pt-0"><small class="text-muted text-uppercase">'+item.id_emp+'</small></div>'+
+								'<div class="col-sm-12 px-3 mt-1">'+
+									'<p>'
+										+item.d_corta+
+									'</p>'+
+								'</div>'+
+								'<div class="row col-sm-12 px-3">'+
+									'<div class="col-sm-6">'+
+										'<p class="text-muted"><i class="fas fa-map-marker-alt"></i>'+
+											+item.id_ciudad+','+item.id_estado+','+item.id_pais+
+										'</p>'+
+									'</div>'+
+									'<div class="tags  col-sm-6 text-right pb-3 pr-0 mr-0">'+
+										show+
+									'</div>'+
+								'</div>'+
+							'</div>';
+
+					contenido += out;
+	
 				}
    				out = contenido;
    				$('#oferta').html(out);
