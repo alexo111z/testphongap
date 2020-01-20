@@ -167,12 +167,12 @@ jQuery(document).on("click",'#SavePersonal',function(e){
       //alert(response.data.access_token);
       alert('Cambios realizados');
       //console.log(tok, id);
-      //window.location.href = './../../perfil.html';
+      window.location.href = './../../perfil.html';
     })
     .catch(function(error){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
-      //location.reload();
+      location.reload();
     });
 
 });
@@ -187,11 +187,12 @@ jQuery(document).on("click",'#SaveLocalidad',function(e){
 	.then(function(response){
 		console.log(response);
 		alert('Cambios realizados');
-		//window.location.href = './../../perfil.html';
+		window.location.href = './../../perfil.html';
 	})
 	.catch(function(error){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
+      location.reload();
     });
 });
 jQuery(document).on("click",'#SaveAcademica',function(e){
@@ -204,11 +205,12 @@ jQuery(document).on("click",'#SaveAcademica',function(e){
 	.then(function(response){
 		console.log(response);
 		alert('Cambios realizados');
-		//window.location.href = './../../perfil.html';
+		window.location.href = './../../perfil.html';
 	})
 	.catch(function(error){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
+      location.reload();
     });
 });
 
@@ -275,11 +277,12 @@ jQuery(document).on("click",'#SaveLaboral',function(e){
 	.then(function(response){
 		console.log(response);
 		alert('Cambios realizados');
-		//window.location.href = './../../perfil.html';
+		window.location.href = './../../perfil.html';
 	})
 	.catch(function(error){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
+      location.reload();
     });
 
 })
