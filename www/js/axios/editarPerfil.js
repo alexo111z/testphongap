@@ -4,6 +4,9 @@ perfil = 'api/perfil/';
 
 var id = localStorage.getItem('id');
 
+var borrar = [];
+var addTags = [];
+
 POST_perfil = url + perfil+id;
 POST_personal = url + '/api/edit/personales/' + id;
 POST_localidad = url + '/api/edit/localidad/' + id;
@@ -91,7 +94,7 @@ jQuery(document).ready(function(){
 				for (tag of response.data.tags) {
 					//console.log(tag.tag);
 						lista = '<div class="chip">'
-                      				+tag.tag+
+                      				+'<label class="tag">'+tag.tag+'</label>'+
                       				'<i class="close material-icons cerrar" id="'+tag.id+'">close</i>'+
                       			'</div>';
 			            show += lista;
@@ -104,6 +107,8 @@ jQuery(document).ready(function(){
 			}else{
 				$('#tags-message').text('No tienes habilidades(tags) registradas.');
 			}
+			$('#editConocimientos').attr('disabled', false);
+			$('#newTag').attr('disabled', false);
 			Materialize.updateTextFields();
 		}).catch(function(error){
 			console.log(error);
@@ -205,18 +210,75 @@ jQuery(document).on("click",'#SaveAcademica',function(e){
       alert('Sucedio un problema, no se realizaron los cambios.');
     });
 });
-jQuery(document).on("click",'.material-icons.cerrar',function(e){
-	alert($(this).attr('id'));
+
+jQuery(document).on("click",'.material-icons.cerrar',function(e){ //Al eliminar
+	if (parseInt( $(this).attr('id')) != 0 ){
+		borrar.push(parseInt( $(this).attr('id') ));
+	}else{
+		//console.log($(this).attr('name'));
+		removeItemFromArr(addTags, $(this).attr('name'));
+	}
+	console.log(borrar);
+	if (contarTags() < 10) {
+		//$('#editConocimientos').attr('disabled', false);
+		$('#newTag').attr('disabled', false);
+	}
+	
 })
-jQuery(document).on("change",'#newTag',function(e){
+jQuery(document).on("change",'#newTag',function(e){ //Al agregar
 	var nuevo = '';
 	if ($('#newTag').val().trim() != '') {
-		alert($('#newTag').val());
+		//alert($('#newTag').val());
 		nuevo = '<div class="chip">'
-  				+$('#newTag').val()+
-  				'<i class="close material-icons cerrar" id="0">close</i>'+
+  				+'<label class="tag">'+$('#newTag').val()+'</label>'+
+  				'<i class="close material-icons cerrar" name="'+$('#newTag').val()+'" id="0">close</i>'+
   			'</div>';
 		$('.tags-elemnt').append(nuevo);
+		addTags.push($('#newTag').val());
+		console.log(addTags);
 		$('#newTag').val('');
 	}
+
+	if (contarTags() == 10) {
+		//$('#editConocimientos').attr('disabled', false);
+		$('#newTag').attr('disabled', true);
+	}
+
 });
+function contarTags(){
+		var x = {}; 
+		x =$('label.tag').length;
+		console.log(x);
+		return x;
+}
+function removeItemFromArr ( arr, item ) {
+    var i = arr.indexOf( item );
+ 
+    if ( i !== -1 ) {
+        arr.splice( i, 1 );
+    }
+}
+
+
+jQuery(document).on("click",'#SaveLaboral',function(e){
+	console.log(borrar);
+	console.log(addTags);
+	var data = {
+		delete: borrar,
+		add: addTags,
+		conoc: $('#editConocimientos').val(),
+	}
+	console.log('editar: '+POST_laboral);
+	
+	axios.post(POST_laboral ,JSON.stringify(data))
+	.then(function(response){
+		console.log(response);
+		alert('Cambios realizados');
+		//window.location.href = './../../perfil.html';
+	})
+	.catch(function(error){
+      console.log(error.response);
+      alert('Sucedio un problema, no se realizaron los cambios.');
+    });
+
+})
