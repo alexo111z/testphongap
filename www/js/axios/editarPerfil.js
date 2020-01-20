@@ -172,6 +172,7 @@ jQuery(document).on("click",'#SavePersonal',function(e){
     .catch(function(error){
       console.log(error.response);
       alert('Sucedio un problema, no se realizaron los cambios.');
+      //location.reload();
     });
 
 });
